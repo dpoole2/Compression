@@ -26,13 +26,13 @@ public int getWeight()
 {
 	return weight;
 }
-public String getParent(){
+public Node getParent(){
 	return parent;
 }
-public void setParent(String Parent){
+public void setParent(Node Parent){
 	parent = Parent;
 }
-String parent = "";
+Node parent;
 String name = "";
 Node child1;
 Node child2;
