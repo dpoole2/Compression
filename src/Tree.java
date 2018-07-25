@@ -1,11 +1,8 @@
 import java.util.ArrayList;
-import java.util.Map;
-
-
-public class Tree {
 /*
- * Tree will also contain a list of trees that will be useful later
+ * @author Dylan Poole
  */
+public class Tree {
 	public Tree(Node parent, Node child1, Node child2, int weight)
 		{
 			Parent = parent;
@@ -30,7 +27,18 @@ public class Tree {
 	{
 		return Weight;
 	}
+	public ArrayList<Node> getTreeList()
+	{
+		return treeList;
+	}
+	public void appendTreeList(ArrayList<Node> newItems)
+	{
+		for(int x =0; x < newItems.size(); x++)
+		{
+			treeList.add(newItems.get(x));
+		}
+	}
 	int Weight;
 	Node Parent, Child1, Child2;
-	ArrayList<Tree> treeList;
+	ArrayList<Node> treeList = new ArrayList<Node>();
 }

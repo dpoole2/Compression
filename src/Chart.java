@@ -10,7 +10,7 @@ public class Chart {
 	}
 	//buildTable will get the frequency of a char
 	//This method does now work ----- It returns a table that has the frequency of the chars as the value
-	public static Map buildTable()
+	public Map<Character, Integer> buildTable()
 	{
 		Map<Character, Integer> table = new HashMap<Character, Integer>();
 		int loopControl = subject.length();
@@ -25,12 +25,13 @@ public class Chart {
 			else
 			{
 				//This is creating a new dict value... Thanks Kinga
+				//Note to reader, Kinga was my intro to cs professor who taught me how to use dicts
 				table.put(subject.charAt(x), 1);
 			}
 		}
 		return table;
 	}
-	public static ArrayList getTreeList(Map huffman)
+	public ArrayList<Tree> getTreeList(Map<Character, Integer> huffman)
 	{
 		while(huffman.size() > 0)
 		{
@@ -41,22 +42,25 @@ public class Chart {
 			//This is a filler
 			Node x = null,y = null;
 			Tree tree = new Tree(node ,y ,x , tempInt);
+			ArrayList<Node> list = new ArrayList<Node>();
+			list.add(node);
+			tree.appendTreeList(list);
 			nodeList.add(tree);
 			huffman.remove(tempChar);
 		}
 		return nodeList;
 	}
 	//This is going to take the map and find the lowest value in it
-	public static ArrayList getChildrenList()
+	public ArrayList<Node> getChildrenList()
 	{
 		return childrenNodes;
 	}
-	public static Character getLowestLeaf(Map table)
+	public static Character getLowestLeaf(Map<Character, Integer> table)
 	{
 		Integer min = -1;
 		Character key = ' ';
-		Collection collection = table.values();
-		Collection collectionKeys = table.keySet();
+		Collection<Integer> collection = table.values();
+		Collection<Character> collectionKeys = table.keySet();
 		Object [] array = collection.toArray();
 		Object [] arrayKey = collectionKeys.toArray();
 		for(int x = 0; x < array.length; x++ )
